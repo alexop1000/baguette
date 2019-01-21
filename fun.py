@@ -148,7 +148,7 @@ class Fun:
     async def help(self, ctx):
         author = ctx.message.author
 
-        embed=discord.Embed(description="These are the available commands", color=0x0080ff)
+        embed=discord.Embed(description="These are the available commands", color=0x0080ff, timestamp=datetime.datetime.utcfromtimestamp(1548091066))
         embed.set_author(name="Baguette Bot", url="https://media.discordapp.net/attachments/444140244179353610/536854888244707328/image0.png?width=450&height=450", icon_url="https://media.discordapp.net/attachments/444140244179353610/536854888244707328/image0.png?width=450&height=450")
         embed.set_thumbnail(url="https://media.discordapp.net/attachments/444140244179353610/536854888244707328/image0.png?width=450&height=450")
         embed.add_field(name="Help", value="Help Command.", inline=True)
@@ -160,7 +160,7 @@ class Fun:
         embed.add_field(name="quickpoll", value="Makes a poll.", inline=False)
         embed.add_field(name="embed", value="Use +embed for more info.", inline=False)
         embed.add_field(name="translate", value="Translate into a given language (doesnt work everytime) use +langlist for list of languages.", inline=False)
-        embed.set_footer(text="{} -> {}".format(ctx.message.author, self.get_time()))
+        embed.set_footer(text="Help command")
         await self.bot.send_message(ctx.message.author, embed=embed)
 
     def get_time(self):
