@@ -89,7 +89,7 @@ async def leaderboard(ctx):
     users = json.load(t)
     experience = users[ctx.message.author.id + "-" + ctx.message.server.id]["experience"]
     lvl_start = users[ctx.message.author.id + "-" + ctx.message.server.id]["level"]
-    high_score_list = sorted(users, key=lambda x : users[ctx.message.author.id + "-" + ctx.message.server.id]["level"], reverse=True)
+    high_score_list = sorted(users, key=lambda x : users[x.id + "-" + ctx.message.server.id]["level"], reverse=True)
     message = ''
     for number, user in enumerate(high_score_list):
         message += f"{number + 1}. {ctx.message.author} with level {lvl_start}"
