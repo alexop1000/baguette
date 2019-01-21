@@ -41,24 +41,24 @@ async def on_message(message):
     if message.channel.is_private:
         return
     else:
-        await update_data(users, message.author, servers)
+        await update_data(users, message.author)
         number = random.randint(5,10)
-        await add_experience(users, message.author, number, servers)
-        await level_up(users, message.author, message.channel, servers)
+        await add_experience(users, message.author, number)
+        await level_up(users, message.author, message.channel)
 
     with open("storage/users.json", "w") as f:
         json.dump(users, f)
     await bot.process_commands(message)
 
 
-async def update_data(users, user, servers):
+async def update_data(users, user):
     if not user.id in users:
         users[user.id] = {}
         users[user.id]["xp"] = 0
         users[user.id]["level"] = 1
         users[user.id]["last_message"] = 0
 
-async def add_experience(users, user, exp, server, servers):
+async def add_experience(users, user, exp):
     if time.time() - users[user.id]["last_message"] > 30:
         users[user.id]["xp"] += exp
         users[user.id]["last_message"] = time.time()
