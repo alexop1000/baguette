@@ -193,7 +193,7 @@ class Fun:
                      client_secret='usu3jomlfPmHDGY-iYob0bBrvl8',
                      user_agent='your mom')
         memes_submissions = reddit.subreddit('memes').hot()
-        post_to_pick = random.randint(1, 10)
+        post_to_pick = random.randint(1, 50)
         for i in range(0, post_to_pick):
             submission = next(x for x in memes_submissions if not x.stickied)
 
