@@ -16,7 +16,7 @@ from discord.ext.commands import has_permissions
 
 startup_extensions = ['Music','serverinfo','autorole','fun','Mod','ModLog','welcomr','embed','translate','polls','level']
 Bot = discord.Client
-bot = commands.Bot('+')
+bot = commands.Bot('boi ')
 botdiscord = discord.Client()
 
 @bot.event
@@ -87,8 +87,8 @@ async def level_up(users, user, channel, server, servers):
 async def leaderboard(ctx):
     t = open("storage/users.json", "r")
     users = json.load(t)
-    experience = users[user.id + "-" + server.id]["experience"]
-    lvl_start = users[user.id + "-" + server.id]["level"]
+    experience = users[ctx.message.author.id + "-" + ctx.message.server.id]["experience"]
+    lvl_start = users[ctx.message.author.id + "-" + ctx.message.server.id]["level"]
     high_score_list = sorted(users, key=lambda x : users[x].get('lvl_start', 0), reverse=True)
     message = ''
     for number, user in enumerate(high_score_list):
