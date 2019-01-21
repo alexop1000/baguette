@@ -188,7 +188,7 @@ class Fun:
             self.bot.say("Ehm how do you know this command? Oh well only the owner can use it")
 
     @commands.command(pass_context=True)
-    async def baguette(self, ctx):
+    async def meme(self, ctx):
         reddit = praw.Reddit(client_id='VUbJvq1yQQ5YpQ',
                      client_secret='usu3jomlfPmHDGY-iYob0bBrvl8',
                      user_agent='your mom')
