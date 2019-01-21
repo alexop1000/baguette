@@ -93,6 +93,7 @@ async def leaderboard(ctx):
     message = ''
     for number, user in enumerate(high_score_list):
         message += '{0}. {1} with {2}xp\n'.format(number + 1, user, user.id + "-" + server.id.get('lvl_start', 0))
+    await bot.say(message)
 
 class Main_Commands():
     def __init__(self, bot):
