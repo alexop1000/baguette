@@ -11,6 +11,7 @@ import asyncio
 import datetime
 import json
 import re
+import praw
 from cogs.utils.dataIO.dataIO import js
 
 
@@ -185,6 +186,20 @@ class Fun:
             await self.bot.say(content="this `supports` __a__ **subset** *of* ~~markdown~~ 😃 ```js\nfunction foo(bar) {\n  console.log(bar);\n}\n\nfoo(1);```", embed=embed)
         else:
             self.bot.say("Ehm how do you know this command? Oh well only the owner can use it")
+
+    @commands.command(pass_context=True)
+    async def bagutte(self, ctx):
+        reddit = praw.Reddit(client_id='VUbJvq1yQQ5YpQ',
+                     client_secret='usu3jomlfPmHDGY-iYob0bBrvl8',
+                     user_agent='your mom')
+        memes_submissions = reddit.subreddit('memes').hot()
+        post_to_pick = random.randint(1, 10)
+        for i in range(0, post_to_pick):
+            submission = next(x for x in memes_submissions if not x.stickied)
+
+        await bot.say(submission.url)
+
+
 
 def check_folders():
     if not os.path.exists("data/useful"):
