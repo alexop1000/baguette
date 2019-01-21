@@ -183,9 +183,9 @@ class Fun:
             embed.add_field(name="<:thonkang:219069250692841473>", value="are inline fields", inline=True)
 
             await self.bot.say(content="this `supports` __a__ **subset** *of* ~~markdown~~ 😃 ```js\nfunction foo(bar) {\n  console.log(bar);\n}\n\nfoo(1);```", embed=embed)
-         else:
+        else:
             self.bot.say("Ehm how do you know this command? Oh well only the owner can use it")
-    
+
 def check_folders():
     if not os.path.exists("data/useful"):
         print("Creating data/useful folder...")
