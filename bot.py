@@ -33,8 +33,6 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    g = open("storage/Servers.json", "r")
-    servers = json.load(g)
     t = open("storage/users.json", "r")
     users = json.load(t)
 
@@ -43,56 +41,51 @@ async def on_message(message):
     if message.channel.is_private:
         return
     else:
-        await update_data(users, message.author, message.server, servers)
+        await update_data(users, message.author, servers)
         number = random.randint(5,10)
-        await add_experience(users, message.author, number, message.server, servers)
-        await level_up(users, message.author, message.channel, message.server, servers)
+        await add_experience(users, message.author, number, servers)
+        await level_up(users, message.author, message.channel, servers)
 
     with open("storage/users.json", "w") as f:
         json.dump(users, f)
-    with open("storage/Servers.json", "w") as k:
-        json.dump(servers, k)
     await bot.process_commands(message)
 
 
-async def update_data(users, user, server, servers):
-    if not user.id + "-" + server.id in users:
-        users[user.id + "-" + server.id] = {}
-        users[user.id + "-" + server.id]["experience"] = 0
-        users[user.id + "-" + server.id]["level"] = 1
-        users[user.id + "-" + server.id]["last_message"] = 0
-    if not server.id in servers:
-        servers[server.id] = {}
-        servers[server.id]["disabled"] = "false"
+async def update_data(users, user, servers):
+    if not user.id in users:
+        users[user.id] = {}
+        users[user.id]["xp"] = 0
+        users[user.id]["level"] = 1
+        users[user.id]["last_message"] = 0
 
 async def add_experience(users, user, exp, server, servers):
-    if time.time() - users[user.id + "-" + server.id]["last_message"] > 30:
-        users[user.id + "-" + server.id]["experience"] += exp
-        users[user.id + "-" + server.id]["last_message"] = time.time()
+    if time.time() - users[user.id]["last_message"] > 30:
+        users[user.id]["xp"] += exp
+        users[user.id]["last_message"] = time.time()
         print("player {}/{} gained {} xp".format(user.name, user.id, exp))
     else:
          return
 
-async def level_up(users, user, channel, server, servers):
-    experience = users[user.id + "-" + server.id]["experience"]
-    lvl_start = users[user.id + "-" + server.id]["level"]
+async def level_up(users, user, channel, servers):
+    experience = users[user.id]["xp"]
+    lvl_start = users[user.id]["level"]
     lvl_end = int(experience ** (1/4))
 
     if lvl_start < lvl_end:
         await bot.send_message(channel, ":tada: Congrats {}, you levelled up to level {}!".format(user.mention, lvl_end))
-        users[user.id + "-" + server.id]["level"] = lvl_end
+        users[user.id]["level"] = lvl_end
         print("player {}/{} leveled up with {} xp".format(user.name, user.id, experience))
 
 @bot.command(pass_context=True)
 async def leaderboard(ctx):
     t = open("storage/users.json", "r")
     users = json.load(t)
-    experience = users[ctx.message.author.id + "-" + ctx.message.server.id]["experience"]
-    lvl_start = users[ctx.message.author.id + "-" + ctx.message.server.id]["level"]
-    high_score_list = sorted(users, key=lambda x : users[x + "-" + ctx.message.server.id]["level"], reverse=True)
+    experience = users[ctx.message.author.id]["xp"]
+    lvl_start = users[ctx.message.author.id]["level"]
+    high_score_list = sorted(users, key=lambda x : users[x].get('xp', 0), reverse=True)
     message = ''
     for number, user in enumerate(high_score_list):
-        message += f"{number + 1}. {ctx.message.author} with level {lvl_start}"
+        message += f"{number + 1}. {ctx.message.author} with level {users[user].get('xp', 0)}"
     await bot.send_message(ctx.message.channel, message)
 
 class Main_Commands():
