@@ -82,10 +82,10 @@ async def leaderboard(ctx):
     users = json.load(t)
     experience = users[ctx.message.author.id]["xp"]
     lvl_start = users[ctx.message.author.id]["level"]
-    high_score_list = sorted(users, key=lambda x : users[x].get('xp', 0), reverse=True)
+    high_score_list = sorted(users, key=lambda x : users[x.mention].get('xp', 0), reverse=True)
     message = ''
     for number, user in enumerate(high_score_list):
-        message += '{0}. {1} with {2}xp\n'.format(number + 1, user.mention, users[user].get('xp', 0))
+        message += '{0}. {1} with {2}xp\n'.format(number + 1, user, users[user].get('xp', 0))
     await bot.send_message(ctx.message.channel, message)
 
 class Main_Commands():
