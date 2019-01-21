@@ -16,7 +16,7 @@ from discord.ext.commands import has_permissions
 
 startup_extensions = ['Music','serverinfo','autorole','fun','Mod','ModLog','welcomr','embed','translate','polls','level']
 Bot = discord.Client
-bot = commands.Bot('+')
+bot = commands.Bot('boi ')
 botdiscord = discord.Client()
 
 @bot.event
