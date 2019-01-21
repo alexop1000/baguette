@@ -99,4 +99,4 @@ if __name__ == "__main__":
 
 loop = asyncio.get_event_loop()
 #loop.run_until_complete(bot.run(str(os.environ.get('BOT_TOKEN'))))
-loop.run_until_complete(bot.run(str('NTM2ODI1ODI5ODYzNDU2Nzc4.DycV7Q.qAO4SsLzIqVRbpOwnL-BJ3hd50A')))
+loop.run_until_complete(bot.run(str(os.environ.get('BOT_TOKEN'))))
