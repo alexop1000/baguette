@@ -66,7 +66,7 @@ async def add_experience(users, user, exp):
     else:
          return
 
-async def level_up(users, user, channel, servers):
+async def level_up(users, user, channel):
     experience = users[user.id]["xp"]
     lvl_start = users[user.id]["level"]
     lvl_end = int(experience ** (1/4))
