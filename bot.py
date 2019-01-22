@@ -85,7 +85,7 @@ async def leaderboard(ctx):
     high_score_list = sorted(users, key=lambda x : users[x].get('xp', 0), reverse=True)
     message = discord.Embed(title='Leaderboard', color=0xff00f6)
     for number, user in enumerate(high_score_list):
-        message.add_field(name='{}.'.format(number + 1), value='{1} with {2}xp\n'.format(ctx.message.author.server.get_member(user), users[user].get('xp', 0)))
+        message.add_field(name='{}.'.format(number + 1), value='{0} with {1}xp\n'.format(ctx.message.author.server.get_member(user), users[user].get('xp', 0)))
     await bot.send_message(ctx.message.channel, message)
 
 class Main_Commands():
