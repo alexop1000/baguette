@@ -199,7 +199,17 @@ class Fun:
 
         await self.bot.say(submission.url)
 
+    @commands.command(pass_context=True)
+    async def baguette(self, ctx):
+        reddit = praw.Reddit(client_id='VUbJvq1yQQ5YpQ',
+                     client_secret='usu3jomlfPmHDGY-iYob0bBrvl8',
+                     user_agent='your mom')
+        memes_submissions = reddit.subreddit('BaguetteConnect').hot()
+        post_to_pick = random.randint(1, 10)
+        for i in range(0, post_to_pick):
+            submission = next(x for x in memes_submissions if not x.stickied)
 
+        await self.bot.say(submission.url)
 
 def check_folders():
     if not os.path.exists("data/useful"):
