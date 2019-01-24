@@ -19,7 +19,7 @@ from io import BytesIO
 from typing import Union
 
 class ImageCog:
-    def __init__(self, bot: commands.Bot):
+    def __init__(self, bot):
 
         # we need to include a reference to the bot here so we can access its loop later.
         self.bot = bot
@@ -80,13 +80,13 @@ class ImageCog:
 
         return final_buffer
 
-    @commands.command()
+    @commands.command(pass_context=True)
     async def circle(self, ctx, *, member: discord.Member = None):
         """Display the user's avatar on their colour."""
 
         # this means that if the user does not supply a member, it will default to the
         # author of the message.
-        member = member or ctx.message.author
+        member = member or self.ctx.message.author
 
         async with ctx.typing():
             # this means the bot will type while it is processing and uploading the image
@@ -116,5 +116,5 @@ class ImageCog:
 
 
 # setup function so this can be loaded as an extension
-def setup(bot: commands.Bot):
+def setup(bot):
     bot.add_cog(ImageCog(bot))
