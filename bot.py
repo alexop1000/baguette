@@ -96,7 +96,7 @@ async def about(ctx):
     messages = bot.messages
     channels = bot.get_all_channels()
     embed=discord.Embed(title='Bot information', description='[Support Server Invite](https://discord.gg/hGaayXq)', color=0xff00f6)
-    embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
+    embed.set_author(name=ctx.author.name, icon_url=ctx.message.author.avatar_url)
     embed.add_field(name='Servers', value=f'Currently in {str(len(servers))} servers.')
     embed.add_field(name='Online Users', value=str(len({m.id for m in bot.get_all_members() if m.status is not discord.Status.offline})))
     embed.add_field(name='Total Users', value=str(len({m.id for m in bot.get_all_members()})))
