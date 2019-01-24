@@ -68,7 +68,8 @@ class ImageCog:
                     # paste the alpha-less avatar on the background using the new circle mask
                     # we just created.
                     background.paste(rgb_avatar, (0, 0), mask=mask)
-                    ImageDraw.Draw.multiline_textsize('hi', font=None, spacing=0)
+                    mask_text = ImageDraw.Draw(mask)
+                    mask_text.text(xy, 'hi', fill=None, font=None, anchor=None, spacing=0, align="left")
                 # prepare the stream to save this image into
                 final_buffer = BytesIO()
 
