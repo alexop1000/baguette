@@ -95,15 +95,30 @@ async def about(ctx):
     messages = bot.messages
     channels = bot.get_all_channels()
     embed=discord.Embed(title='Bot information', description='[Support Server Invite](https://discord.gg/hGaayXq)', color=0xff00f6)
-    embed.add_field(name='Servers', value=f'Currently in {str(len(servers))} servers.', inline=True)
-    embed.add_field(name='Online Users', value=str(len({m.id for m in bot.get_all_members() if m.status is not discord.Status.offline})), inline=True)
-    embed.add_field(name='Total Users', value=str(len({m.id for m in bot.get_all_members()})), inline=True)
-    embed.add_field(name='Messages', value=f'Total messages sent since restart {str(len(messages))}', inline=True)
+    em.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
+    embed.add_field(name='Servers', value=f'Currently in {str(len(servers))} servers.')
+    embed.add_field(name='Online Users', value=str(len({m.id for m in bot.get_all_members() if m.status is not discord.Status.offline})))
+    embed.add_field(name='Total Users', value=str(len({m.id for m in bot.get_all_members()})))
     embed.add_field(name='Channels', value=f"{sum(1 for g in bot.servers for _ in g.channels)}")
+    embed.add_field(name="Library", value=f"discord.py")
+    embed.add_field(name="Invite", value=f"[Click Here](https://discordapp.com/oauth2/authorize?client_id={bot.user.id}&scope=bot&permissions=268905542)")
     embed.add_field(name="Upvote this bot!", value=f"[Click here](https://discordbots.org/bot/{bot.user.id}) :reminder_ribbon:")
     embed.set_footer(text="BaguetteBot | By AlexOp")
     await bot.say(embed=embed)
 
+@commands.command(aliases=['trump', 'trumpquote'])
+    async def asktrump(self, ctx, *, question):
+        '''Ask Donald Trump a question!'''
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f'https://api.whatdoestrumpthink.com/api/v1/quotes/personalized?q={question}') as resp:
+                file = await resp.json()
+        quote = file['message']
+        em = discord.Embed(color=discord.Color.green())
+        em.title = "What does Trump mean?"
+        em.description = quote
+        em.set_footer(text="Trump", icon_url="http://www.stickpng.com/assets/images/5841c17aa6515b1e0ad75aa1.png")
+        await ctx.send(embed=em)
+        
 class Main_Commands():
     def __init__(self, bot):
         self.bot = bot
