@@ -99,7 +99,7 @@ async def about(ctx):
     embed.add_field(name='Online Users', value=str(len({m.id for m in bot.get_all_members() if m.status is not discord.Status.offline})), inline=True)
     embed.add_field(name='Total Users', value=str(len({bot.get_all_members()})), inline=True)
     embed.add_field(name='Messages', value=f'Total messages sent since restart {str(len(messages))}', inline=True)
-    embed.add_field(name='Channels', value=f"{sum(1 for g in bot.guilds for _ in g.channels)}")
+    embed.add_field(name='Channels', value=f"{sum(1 for g in bot.servers for _ in g.channels)}")
     embed.add_field(name="Bot Latency", value=f"{bot.ws.latency * 1000:.0f} ms")
     embed.add_field(name="Upvote this bot!", value=f"[Click here](https://discordbots.org/bot/{bot.user.id}) :reminder_ribbon:")
     embed.set_footer(text="BaguetteBot | By AlexOp")
