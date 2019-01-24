@@ -106,7 +106,7 @@ async def about(ctx):
     embed.set_footer(text="BaguetteBot | By AlexOp")
     await bot.say(embed=embed)
 
-@commands.command(aliases=['trump', 'trumpquote'])
+@bot.command(aliases=['trump', 'trumpquote'])
 async def asktrump(self, ctx, *, question):
     '''Ask Donald Trump a question!'''
     async with aiohttp.ClientSession() as session:
