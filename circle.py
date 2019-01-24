@@ -62,7 +62,7 @@ class ImageCog:
                     # using it to draw a white circle on the mask image.
                     mask_draw = ImageDraw.Draw(mask)
                     mask_text = ImageDraw.Draw(mask)
-                    mask_text.text((0, 0), 'hi', fill=255, font=None, anchor=None, spacing=0, align="center")
+                    mask_text.text((0, 0), 'hi', fill=255, font=None, anchor=None, spacing=0, align="center", im.size)
 
                     # draw the white circle from 0, 0 to the bottom right corner of the image
                     mask_draw.ellipse([(0, 0), im.size], fill=255)
