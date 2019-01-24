@@ -93,10 +93,10 @@ async def about(ctx):
     servers = bot.servers
     members = bot.get_all_members()
     messages = bot.messages
-    embed=discord.Embed(title='Bot information', description='Support Server Invite', url='https://discord.gg/hGaayXq')
+    embed=discord.Embed(title='Bot information', description='Support Server Invite', url='https://discord.gg/hGaayXq', color=discord.color.red())
     embed.add_field(name='Servers', value=f'Currently in {str(len(servers))} servers.', inline=True)
-    embed.add_field(name='Members', value=f'Currently serving {str(members)} members', inline=True)
-    embed.add_field(name='Commands', value=f'Total commands run {str(len(messages))}', inline=True)
+    embed.add_field(name='Members', value=f'Currently serving {members} members', inline=True)
+    embed.add_field(name='Messages', value=f'Total messages sent since restart {str(len(messages))}', inline=True)
     await bot.say(embed=embed)
 
 class Main_Commands():
