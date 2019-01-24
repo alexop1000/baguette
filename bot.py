@@ -87,6 +87,17 @@ async def leaderboard(ctx):
     for number, user in enumerate(high_score_list):
         embed.add_field(name='{}.'.format(number + 1), value='{0} with {1}xp\n'.format(ctx.message.author.server.get_member(user), users[user].get('xp', 0)), inline=False)
     await bot.send_message(ctx.message.channel, embed=embed)
+    
+@bot.command(pass_context=True)
+async def about(ctx):
+    servers = bot.servers
+    members = bot.get_all_members()
+    messages = bot.messages
+    embed=discord.Embed(title='Bot information', description='Support Server Invite', url='https://discord.gg/hGaayXq')
+    embed.add_field(name='Servers', value=f'Currently in {str(len(servers))} servers.', inline=True)
+    embed.add_field(name='Members', value=f'Currently serving {str(len(members))} members', inline=True)
+    embed.add_field(name='Commands', value=f'Total commands run {str(len(messages))}', inline=True)
+    await bot.say(embed=embed)
 
 class Main_Commands():
     def __init__(self, bot):
