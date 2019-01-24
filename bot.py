@@ -12,6 +12,7 @@ from discord import Game
 from discord.voice_client import VoiceClient
 from discord import Member
 from discord.ext.commands import has_permissions
+import aiohttp
 
 
 startup_extensions = ['Music','serverinfo','autorole','fun','Mod','ModLog','welcomr','embed','translate','polls','level']
