@@ -95,7 +95,7 @@ async def about(ctx):
     messages = bot.messages
     channels = bot.get_all_channels()
     for server in bot.servers:
-        for member in server.member:
+        for member in server.members:
             embed=discord.Embed(title='Bot information', description='Support Server Invite', url='https://discord.gg/hGaayXq', color=0xff00f6)
             embed.add_field(name='Servers', value=f'Currently in {str(len(servers))} servers.', inline=True)
             embed.add_field(name='Members', value=f'Currently serving {str(len(member))} members', inline=True)
