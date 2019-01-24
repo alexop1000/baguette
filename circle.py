@@ -86,7 +86,7 @@ class ImageCog:
 
         # this means that if the user does not supply a member, it will default to the
         # author of the message.
-        member = member or ctx.author
+        member = member or ctx.message.author
 
         async with ctx.typing():
             # this means the bot will type while it is processing and uploading the image
@@ -112,7 +112,7 @@ class ImageCog:
             file = discord.File(filename="circle.png", fp=final_buffer)
 
             # send it
-            await ctx.send(file=file)
+            await self.bot.send_message(ctx.message.channel, file=file)
 
 
 # setup function so this can be loaded as an extension
