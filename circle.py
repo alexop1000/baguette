@@ -99,7 +99,7 @@ class ImageCog:
             member_colour = (0, 0, 0)
 
             # grab the user's avatar as bytes
-        avatar_bytes = ctx.message.author.avatar_url
+        avatar_bytes = ctx.message.author.avatar
 
             # create partial function so we don't have to stack the args in run_in_executor
         fn = partial(self.processing, avatar_bytes, member_colour)
