@@ -31,7 +31,7 @@ class ImageCog:
     async def get_avatar(self, user: Union[discord.User, discord.Member]) -> bytes:
 
         # generally an avatar will be 1024x1024, but we shouldn't rely on this
-        avatar_url = user.avatar_url(format="png")
+        avatar_url = user.avatar_url
 
         async with self.session.get(avatar_url) as response:
             # this gives us our response object, and now we can read the bytes from it.
