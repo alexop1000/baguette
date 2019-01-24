@@ -102,7 +102,7 @@ async def about(ctx):
     embed.add_field(name='Channels', value=f"{sum(1 for g in bot.guilds for _ in g.channels)}")
     embed.add_field(name="Bot Latency", value=f"{bot.ws.latency * 1000:.0f} ms")
     embed.add_field(name="Upvote this bot!", value=f"[Click here](https://discordbots.org/bot/{bot.user.id}) :reminder_ribbon:")
-    embed.set_footer(text="BaguetteBot | By AlexOp
+    embed.set_footer(text="BaguetteBot | By AlexOp")
     await bot.say(embed=embed)
 
 class Main_Commands():
