@@ -109,10 +109,8 @@ class ImageCog:
         final_buffer = await self.bot.loop.run_in_executor(None, fn)
 
             # prepare the file
-        file = discord.File(filename="circle.png", fp=final_buffer)
-
             # send it
-        await self.bot.send_message(ctx.message.channel, file=file)
+        await self.bot.send_file(ctx.message.channel, fp=final_buffer, filename="circle.png")
 
 
 # setup function so this can be loaded as an extension
