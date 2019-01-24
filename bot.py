@@ -94,10 +94,10 @@ async def about(ctx):
     members = bot.get_all_members()
     messages = bot.messages
     channels = bot.get_all_channels()
-    embed=discord.Embed(title='Bot information', description='Support Server Invite', url='https://discord.gg/hGaayXq', color=0xff00f6)
+    embed=discord.Embed(title='Bot information', description='[Support Server Invite](https://discord.gg/hGaayXq)', color=0xff00f6)
     embed.add_field(name='Servers', value=f'Currently in {str(len(servers))} servers.', inline=True)
     embed.add_field(name='Online Users', value=str(len({m.id for m in bot.get_all_members() if m.status is not discord.Status.offline})), inline=True)
-    embed.add_field(name='Total Users', value=str(len({bot.get_all_members()})), inline=True)
+    embed.add_field(name='Total Users', value=str(len({m.id for m in bot.get_all_members()})), inline=True)
     embed.add_field(name='Messages', value=f'Total messages sent since restart {str(len(messages))}', inline=True)
     embed.add_field(name='Channels', value=f"{sum(1 for g in bot.servers for _ in g.channels)}")
     embed.add_field(name="Upvote this bot!", value=f"[Click here](https://discordbots.org/bot/{bot.user.id}) :reminder_ribbon:")
