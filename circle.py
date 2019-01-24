@@ -31,7 +31,7 @@ class ImageCog:
     async def get_avatar(self, user: Union[discord.User, discord.Member]) -> bytes:
 
         # generally an avatar will be 1024x1024, but we shouldn't rely on this
-        avatar_url = user.avatar_url_as(format="png")
+        avatar_url = user.avatar_url(format="png")
 
         async with self.session.get(avatar_url) as response:
             # this gives us our response object, and now we can read the bytes from it.
@@ -99,7 +99,7 @@ class ImageCog:
             member_colour = (0, 0, 0)
 
             # grab the user's avatar as bytes
-        avatar_bytes = ctx.message.author.avatar
+        avatar_bytes = await self.get_avatar(member)
 
             # create partial function so we don't have to stack the args in run_in_executor
         fn = partial(self.processing, avatar_bytes, member_colour)
