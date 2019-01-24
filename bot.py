@@ -15,7 +15,7 @@ from discord.ext.commands import has_permissions
 import aiohttp
 
 
-startup_extensions = ['Music','serverinfo','autorole','fun','Mod','ModLog','welcomr','embed','translate','polls','level']
+startup_extensions = ['Music','serverinfo','autorole','fun','Mod','ModLog','welcomr','embed','translate','polls','level','circle']
 Bot = discord.Client
 bot = commands.Bot('boi ')
 botdiscord = discord.Client()
