@@ -107,7 +107,7 @@ async def about(ctx):
     await bot.say(embed=embed)
 
 @bot.command(aliases=['trump', 'trumpquote'])
-async def asktrump(self, ctx, *, question):
+async def asktrump(ctx, *, question):
     '''Ask Donald Trump a question!'''
     async with aiohttp.ClientSession() as session:
         async with session.get(f'https://api.whatdoestrumpthink.com/api/v1/quotes/personalized?q={question}') as resp:
