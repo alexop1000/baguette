@@ -118,7 +118,7 @@ async def asktrump(ctx, *, question):
     em.title = "What does Trump mean?"
     em.description = quote
     em.set_footer(text="Trump", icon_url="http://www.stickpng.com/assets/images/5841c17aa6515b1e0ad75aa1.png")
-    await ctx.send(embed=em)
+    await bot.say(embed=em)
         
 class Main_Commands():
     def __init__(self, bot):
