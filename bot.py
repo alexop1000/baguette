@@ -96,7 +96,7 @@ async def about(ctx):
     channels = bot.get_all_channels()
     embed=discord.Embed(title='Bot information', description='Support Server Invite', url='https://discord.gg/hGaayXq', color=0xff00f6)
     embed.add_field(name='Servers', value=f'Currently in {str(len(servers))} servers.', inline=True)
-    embed.add_field(name='Members', value=f'Currently serving {str(len(bot.get_all_members()))} members', inline=True)
+    embed.add_field(name='Members', value=f'Currently serving {bot.get_all_members()} members', inline=True)
     embed.add_field(name='Messages', value=f'Total messages sent since restart {str(len(messages))}', inline=True)
     embed.add_field(name='Channels', value=f'{str(len(channels))}', inline=True)
     await bot.say(embed=embed)
