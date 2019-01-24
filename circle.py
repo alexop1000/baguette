@@ -93,7 +93,7 @@ class ImageCog:
 
         if isinstance(member, discord.Member):
                 # get the user's colour, pretty self explanatory
-            member_colour = member.color
+            member_colour = member.color.to_tuple()
         else:
                 # if this is in a DM or something went seriously wrong
             member_colour = (0, 0, 0)
