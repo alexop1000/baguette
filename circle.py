@@ -69,7 +69,7 @@ class ImageCog:
                     # we just created.
                     background.paste(rgb_avatar, (0, 0), mask=mask)
                     mask_text = ImageDraw.Draw(mask)
-                    mask_text.text((0, 0), 'hi', fill=(255, 255, 255), font=None, anchor=None, spacing=0, align="center")
+                    mask_text.text((0, 0), 'hi', fill=255, font=None, anchor=None, spacing=0, align="center")
                 # prepare the stream to save this image into
                 final_buffer = BytesIO()
 
