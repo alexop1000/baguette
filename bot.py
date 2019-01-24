@@ -107,17 +107,17 @@ async def about(ctx):
     await bot.say(embed=embed)
 
 @commands.command(aliases=['trump', 'trumpquote'])
-    async def asktrump(self, ctx, *, question):
-        '''Ask Donald Trump a question!'''
-        async with aiohttp.ClientSession() as session:
-            async with session.get(f'https://api.whatdoestrumpthink.com/api/v1/quotes/personalized?q={question}') as resp:
-                file = await resp.json()
-        quote = file['message']
-        em = discord.Embed(color=discord.Color.green())
-        em.title = "What does Trump mean?"
-        em.description = quote
-        em.set_footer(text="Trump", icon_url="http://www.stickpng.com/assets/images/5841c17aa6515b1e0ad75aa1.png")
-        await ctx.send(embed=em)
+async def asktrump(self, ctx, *, question):
+    '''Ask Donald Trump a question!'''
+    async with aiohttp.ClientSession() as session:
+        async with session.get(f'https://api.whatdoestrumpthink.com/api/v1/quotes/personalized?q={question}') as resp:
+            file = await resp.json()
+    quote = file['message']
+    em = discord.Embed(color=discord.Color.green())
+    em.title = "What does Trump mean?"
+    em.description = quote
+    em.set_footer(text="Trump", icon_url="http://www.stickpng.com/assets/images/5841c17aa6515b1e0ad75aa1.png")
+    await ctx.send(embed=em)
         
 class Main_Commands():
     def __init__(self, bot):
