@@ -88,31 +88,31 @@ class ImageCog:
         # author of the message.
         member = member or self.ctx.message.author
 
-        async with ctx.typing():
-            # this means the bot will type while it is processing and uploading the image
 
-            if isinstance(member, discord.Member):
+        # this means the bot will type while it is processing and uploading the image
+
+        if isinstance(member, discord.Member):
                 # get the user's colour, pretty self explanatory
-                member_colour = member.colour.to_rgb()
-            else:
+            member_colour = member.colour.to_rgb()
+        else:
                 # if this is in a DM or something went seriously wrong
-                member_colour = (0, 0, 0)
+            member_colour = (0, 0, 0)
 
             # grab the user's avatar as bytes
-            avatar_bytes = await self.get_avatar(member)
+        avatar_bytes = await self.get_avatar(member)
 
             # create partial function so we don't have to stack the args in run_in_executor
-            fn = partial(self.processing, avatar_bytes, member_colour)
+        fn = partial(self.processing, avatar_bytes, member_colour)
 
             # this runs our processing in an executor, stopping it from blocking the thread loop.
             # as we already seeked back the buffer in the other thread, we're good to go
-            final_buffer = await self.bot.loop.run_in_executor(None, fn)
+        final_buffer = await self.bot.loop.run_in_executor(None, fn)
 
             # prepare the file
-            file = discord.File(filename="circle.png", fp=final_buffer)
+        file = discord.File(filename="circle.png", fp=final_buffer)
 
             # send it
-            await self.bot.send_message(ctx.message.channel, file=file)
+        await self.bot.send_message(ctx.message.channel, file=file)
 
 
 # setup function so this can be loaded as an extension
