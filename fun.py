@@ -231,7 +231,7 @@ class Fun:
         await self.bot.say(submission.url)
 
     @commands.command(pass_context=True)
-    async def lyric(self, ctx, artist, lyric):
+    async def lyric(self, ctx, artist, lyric: str):
         lyrics = lyricwikia.get_lyrics('{}', '{}'.format(artist, lyric))
         await self.bot.send_message(ctx.message.channel, lyrics)
         
