@@ -231,12 +231,9 @@ class Fun:
         await self.bot.say(submission.url)
 
     @commands.command(pass_context=True)
-    async def lyric(self, ctx, artist, lyric: str):
-        try:
-            lyrics = lyricwikia.get_lyrics('{}', '{}'.format(artist, lyric))
-            await self.bot.send_message(ctx.message.channel, lyrics)
-        except:
-            raise LyricsNotFound
+    async def lyric(self, ctx):
+        lyrics = lyricwikia.get_lyrics('Ariana Grande', 'Thank U, Next')
+        await self.bot.send_message(ctx.message.channel, lyrics)
         
 def check_folders():
     if not os.path.exists("data/useful"):
