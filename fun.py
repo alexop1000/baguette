@@ -172,7 +172,7 @@ class Fun:
         embed.add_field(name = 'about' , value = 'Gives you more information on the bot.', inline = False)
         embed.add_field(name = 'calculate' , value = 'When you are too lazy to calculate things yourself.', inline = False)
         embed.add_field(name = 'choice' , value = 'The bot will choose for you. Example: (+choice "Budbot will eat pancakes" "Budbot will eat cookies"', inline = False)
-        embed.add_field(name = 'quickpoll' , value = 'Make a very quick poll! Example:(+quickpoll "Is Budbot a good bot?" yes no) you can also add custom anwsers: (+quickpoll "Is Budbot a good bot?" "Maybe." "Very Yes." "Ill ask my cat."'), inline = False)
+        embed.add_field(name = 'quickpoll' , value = 'Make a very quick poll! Example:(+quickpoll "Is Budbot a good bot?" yes no) you can also add custom anwsers: (+quickpoll "Is Budbot a good bot?" "Maybe." "Very Yes." "Ill ask my cat.")', inline = False)
         embed.add_field(name = 'embed' , value = 'Embed a message! Use +embed for more info!', inline = False)
         embed.add_field(name = 'translate' , value = 'You can speak every language now! Example: (+translate [language (like : "en" or "de")] [what you want to translate]) Use "+translate langlist" to view the supported languages.)', inline = False)
         await self.bot.send_message(ctx.message.author, embed=embed)
