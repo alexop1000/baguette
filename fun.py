@@ -11,6 +11,7 @@ import asyncio
 import datetime
 import json
 import re
+import lyricwikia
 import praw
 from cogs.utils.dataIO.dataIO import js
 
@@ -229,6 +230,11 @@ class Fun:
 
         await self.bot.say(submission.url)
 
+    @commands.command(pass_context=True)
+    async def lyric(self, ctx):
+        lyrics = lyricwikia.get_lyrics('Led Zeppelin', 'Stairway to heaven')
+        self.bot.send_message(ctx.message.channel, lyric)
+        
 def check_folders():
     if not os.path.exists("data/useful"):
         print("Creating data/useful folder...")
