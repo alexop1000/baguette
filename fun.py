@@ -167,7 +167,7 @@ class Fun:
         embed.add_field(name = 'help' , value = 'The command you just used.', inline = True)
         embed.add_field(name = 'helpmod'  , value = 'For moderation commands.', inline = True)
         await self.bot.send_message(ctx.message.author, embed=embed)
-        await self.bot.say('{} i sent you a dm with my commands!.format(ctx.message.author.mention))
+        await self.bot.say('{} i sent you a dm with my commands!'.format(ctx.message.author.mention))
         embed = discord.Embed(title = 'Useful Commands', description = 'These are very useful commands!', color = 0x00a800, timestamp=datetime.datetime.now())
         embed.add_field(name = 'about' , value = 'Gives you more information on the bot.', inline = False)
         embed.add_field(name = 'calculate' , value = 'When you are too lazy to calculate things yourself.', inline = False)
