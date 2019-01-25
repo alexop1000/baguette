@@ -25,3 +25,5 @@ dblpy
 praw
 
 pillow
+
+lyricwikia
