@@ -233,7 +233,7 @@ class Fun:
     @commands.command(pass_context=True)
     async def lyric(self, ctx):
         lyrics = lyricwikia.get_lyrics('Led Zeppelin', 'Stairway to heaven')
-        self.bot.send_message(ctx.message.channel, lyrics)
+        await self.bot.send_message(ctx.message.channel, lyrics)
         
 def check_folders():
     if not os.path.exists("data/useful"):
