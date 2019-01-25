@@ -232,7 +232,7 @@ class Fun:
 
     @commands.command(pass_context=True)
     async def lyric(self, ctx, artist, lyric: str):
-        lyrics = lyricwikia.get_lyrics('{}', '{}'.format(artist, lyric))
+        lyrics = lyricwikia.get_lyrics('XxxtentationxxX', 'Sad'.format(artist, lyric))
         await self.bot.send_message(ctx.message.channel, lyrics)
         
 def check_folders():
